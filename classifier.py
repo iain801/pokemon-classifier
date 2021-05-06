@@ -19,8 +19,8 @@ print(image_count)
 
 # Create a dataset
 batch_size = 32
-img_height = 215
-img_width = 215
+img_height = 200
+img_width = 200
 
 # 80/20 validation split
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(

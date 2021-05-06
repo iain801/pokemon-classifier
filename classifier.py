@@ -10,8 +10,8 @@ from tensorflow.keras.models import Sequential
 
 # Download and explore dataset
 import pathlib
-dataset_url = "https://github.com/iain801/pokemon-classifier/raw/main/Pokemon/"
-data_dir = tf.keras.utils.get_file('Pokemon', origin=dataset_url)
+dataset_url = "https://github.com/iain801/pokemon-classifier/raw/main/Pokemon.tar"
+data_dir = tf.keras.utils.get_file('Pokemon', origin=dataset_url, untar=True)
 data_dir = pathlib.Path(data_dir)
 
 image_count = len(list(data_dir.glob('*/*.jpg')))
@@ -73,7 +73,7 @@ first_image = image_batch[0]
 print(np.min(first_image), np.max(first_image))
 
 # Create Model
-num_classes = 5
+num_classes = 3
 
 data_augmentation = keras.Sequential(
   [
@@ -109,7 +109,7 @@ model.compile(optimizer='adam',
 model.summary()
 
 # Train Model
-epochs = 20
+epochs = 15
 history = model.fit(
   train_ds,
   validation_data=val_ds,

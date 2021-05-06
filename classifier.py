@@ -10,11 +10,11 @@ from tensorflow.keras.models import Sequential
 
 # Download and explore dataset
 import pathlib
-dataset_url = "https://github.com/iain801/pokemon-classifier/raw/main/Pokemon.tar"
-data_dir = tf.keras.utils.get_file('Pokemon', origin=dataset_url, untar=True)
+dataset_url = "https://github.com/iain801/pokemon-classifier/raw/main/Pokemon/"
+data_dir = tf.keras.utils.get_file('Pokemon', origin=dataset_url)
 data_dir = pathlib.Path(data_dir)
 
-image_count = len(list(data_dir.glob('*/*.png')))
+image_count = len(list(data_dir.glob('*/*.jpg')))
 print(image_count)
 
 # Create a dataset

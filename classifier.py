@@ -19,7 +19,7 @@ image_count = len(list(data_dir.glob('*/*.jpg')))
 print(image_count)
 
 # Create a dataset
-batch_size = 10
+batch_size = 16
 img_height = 200
 img_width = 200
 

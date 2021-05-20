@@ -20,8 +20,8 @@ print(image_count)
 
 # Create a dataset
 batch_size = 16
-img_height = 200
-img_width = 200
+img_height = 500
+img_width = 500
 
 # 80/20 validation split
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
@@ -47,8 +47,8 @@ print(class_names)
 # Visualize data
 plt.figure(figsize=(10, 10))
 for images, labels in train_ds.take(1):
-  for i in range(9):
-    ax = plt.subplot(3, 3, i + 1)
+  for i in range(16):
+    ax = plt.subplot(4, 4, i + 1)
     plt.imshow(images[i].numpy().astype("uint8"))
     plt.title(class_names[labels[i]])
     plt.axis("off")
@@ -74,14 +74,11 @@ first_image = image_batch[0]
 print(np.min(first_image), np.max(first_image))
 
 # Create Model
-num_classes = 3
+num_classes = 4
 
 data_augmentation = keras.Sequential(
   [
-    layers.experimental.preprocessing.RandomFlip("horizontal", 
-                                                 input_shape=(img_height, 
-                                                              img_width,
-                                                              3)),
+    layers.experimental.preprocessing.RandomFlip("horizontal",input_shape=(img_height,img_width,3)),
     layers.experimental.preprocessing.RandomRotation(0.1),
     layers.experimental.preprocessing.RandomZoom(0.1),
   ]
@@ -90,11 +87,11 @@ data_augmentation = keras.Sequential(
 model = Sequential([
   data_augmentation,
   layers.experimental.preprocessing.Rescaling(1./255),
-  layers.Conv2D(16, 3, padding='same', activation='relu'),
+  layers.Conv2D(16, 4, padding='same', activation='relu'),
   layers.MaxPooling2D(),
-  layers.Conv2D(32, 3, padding='same', activation='relu'),
+  layers.Conv2D(32, 4, padding='same', activation='relu'),
   layers.MaxPooling2D(),
-  layers.Conv2D(64, 3, padding='same', activation='relu'),
+  layers.Conv2D(64, 4, padding='same', activation='relu'),
   layers.MaxPooling2D(),
   layers.Dropout(0.2),
   layers.Flatten(),
@@ -110,7 +107,7 @@ model.compile(optimizer='adam',
 model.summary()
 
 # Train Model
-epochs = 5
+epochs = 25
 history = model.fit(
   train_ds,
   validation_data=val_ds,

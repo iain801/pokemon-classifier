@@ -110,7 +110,7 @@ model.compile(optimizer='adam',
 model.summary()
 
 # Train Model
-epochs = 25
+epochs = 5
 history = model.fit(
   train_ds,
   validation_data=val_ds,
@@ -146,12 +146,12 @@ del model
 
 model = load_model('pokemon_model')
 
-# Piplup Test
-piplup_url = "https://github.com/iain801/pokemon-classifier/raw/main/water-test.jpg"
-piplup_path = tf.keras.utils.get_file('water-test', origin=piplup_url)
+# water Test
+water_url = "https://github.com/iain801/pokemon-classifier/raw/main/water-test.jpg"
+water_path = tf.keras.utils.get_file('water-test', origin=water_url)
 
 img = keras.preprocessing.image.load_img(
-    piplup_path, target_size=(img_height, img_width)
+    water_path, target_size=(img_height, img_width)
 )
 img_array = keras.preprocessing.image.img_to_array(img)
 img_array = tf.expand_dims(img_array, 0) # Create a batch
@@ -164,12 +164,12 @@ print(
     .format(class_names[np.argmax(score)], 100 * np.max(score))
 )
 
-# Litwick Test
-litwick_url = "https://github.com/iain801/pokemon-classifier/raw/main/fire-test.jpg"
-litwick_path = tf.keras.utils.get_file('fire-test', origin=litwick_url)
+# fire Test
+fire_url = "https://github.com/iain801/pokemon-classifier/raw/main/fire-test.jpg"
+fire_path = tf.keras.utils.get_file('fire-test', origin=fire_url)
 
 img = keras.preprocessing.image.load_img(
-    litwick_path, target_size=(img_height, img_width)
+    fire_path, target_size=(img_height, img_width)
 )
 img_array = keras.preprocessing.image.img_to_array(img)
 img_array = tf.expand_dims(img_array, 0) # Create a batch
@@ -182,12 +182,12 @@ print(
     .format(class_names[np.argmax(score)], 100 * np.max(score))
 )
 
-# Shaymin Test
-shaymin_url = "https://github.com/iain801/pokemon-classifier/raw/main/grass-test.jpg"
-shaymin_path = tf.keras.utils.get_file('grass-test', origin=shaymin_url)
+# grass Test
+grass_url = "https://github.com/iain801/pokemon-classifier/raw/main/grass-test.jpg"
+grass_path = tf.keras.utils.get_file('grass-test', origin=grass_url)
 
 img = keras.preprocessing.image.load_img(
-    shaymin_path, target_size=(img_height, img_width)
+    grass_path, target_size=(img_height, img_width)
 )
 img_array = keras.preprocessing.image.img_to_array(img)
 img_array = tf.expand_dims(img_array, 0) # Create a batch
@@ -197,5 +197,23 @@ score = tf.nn.softmax(predictions[0])
 
 print(
     "This Grass-Type most likely belongs to {} with a {:.2f} percent confidence."
+    .format(class_names[np.argmax(score)], 100 * np.max(score))
+) 
+
+# electric Test
+electric_url = "https://github.com/iain801/pokemon-classifier/raw/main/electric-test.jpg"
+electric_path = tf.keras.utils.get_file('electric-test', origin=electric_url)
+
+img = keras.preprocessing.image.load_img(
+    electric_path, target_size=(img_height, img_width)
+)
+img_array = keras.preprocessing.image.img_to_array(img)
+img_array = tf.expand_dims(img_array, 0) # Create a batch
+
+predictions = model.predict(img_array)
+score = tf.nn.softmax(predictions[0])
+
+print(
+    "This Electric-Type most likely belongs to {} with a {:.2f} percent confidence."
     .format(class_names[np.argmax(score)], 100 * np.max(score))
 ) 

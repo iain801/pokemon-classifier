@@ -107,7 +107,7 @@ model.compile(optimizer='adam',
 model.summary()
 
 # Train Model
-epochs = 25
+epochs = 50
 history = model.fit(
   train_ds,
   validation_data=val_ds,
@@ -156,10 +156,9 @@ img_array = tf.expand_dims(img_array, 0) # Create a batch
 predictions = model.predict(img_array)
 score = tf.nn.softmax(predictions[0])
 
-print(
-    "This Water-Type most likely belongs to {} with a {:.2f} percent confidence."
-    .format(class_names[np.argmax(score)], 100 * np.max(score))
-)
+plt.figure(figsize=(4, 4))
+plt.imshow(img)
+plt.title(class_names[np.argmax(score)] + " C=" + str(100 * np.max(score)) + "%")
 
 # fire Test
 fire_url = "https://github.com/iain801/pokemon-classifier/raw/main/fire-test.jpg"
@@ -174,10 +173,9 @@ img_array = tf.expand_dims(img_array, 0) # Create a batch
 predictions = model.predict(img_array)
 score = tf.nn.softmax(predictions[0])
 
-print(
-    "This Fire-Type most likely belongs to {} with a {:.2f} percent confidence."
-    .format(class_names[np.argmax(score)], 100 * np.max(score))
-)
+plt.figure(figsize=(4, 4))
+plt.imshow(img)
+plt.title(class_names[np.argmax(score)] + " C=" + str(100 * np.max(score)) + "%")
 
 # grass Test
 grass_url = "https://github.com/iain801/pokemon-classifier/raw/main/grass-test.jpg"
@@ -192,10 +190,9 @@ img_array = tf.expand_dims(img_array, 0) # Create a batch
 predictions = model.predict(img_array)
 score = tf.nn.softmax(predictions[0])
 
-print(
-    "This Grass-Type most likely belongs to {} with a {:.2f} percent confidence."
-    .format(class_names[np.argmax(score)], 100 * np.max(score))
-) 
+plt.figure(figsize=(4, 4))
+plt.imshow(img)
+plt.title(class_names[np.argmax(score)] + " C=" + str(100 * np.max(score)) + "%")
 
 # electric Test
 electric_url = "https://github.com/iain801/pokemon-classifier/raw/main/electric-test.jpg"
@@ -210,7 +207,6 @@ img_array = tf.expand_dims(img_array, 0) # Create a batch
 predictions = model.predict(img_array)
 score = tf.nn.softmax(predictions[0])
 
-print(
-    "This Electric-Type most likely belongs to {} with a {:.2f} percent confidence."
-    .format(class_names[np.argmax(score)], 100 * np.max(score))
-) 
+plt.figure(figsize=(4, 4))
+plt.imshow(img)
+plt.title(class_names[np.argmax(score)] + " C=" + str(100 * np.max(score)) + "%")

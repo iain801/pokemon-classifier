@@ -147,8 +147,8 @@ del model
 model = load_model('pokemon_model')
 
 # Piplup Test
-piplup_url = "https://static.wixstatic.com/media/2e36a5_effd17ea4d0d4c3fafbb6f131a0dd186~mv2.jpg/v1/fill/w_760,h_428,al_c,q_90/2e36a5_effd17ea4d0d4c3fafbb6f131a0dd186~mv2.jpg"
-piplup_path = tf.keras.utils.get_file('2e36a5_effd17ea4d0d4c3fafbb6f131a0dd186~mv2', origin=piplup_url)
+piplup_url = "https://github.com/ashleyyz/ai-project/raw/master/water-test.jpg"
+piplup_path = tf.keras.utils.get_file('water-test', origin=piplup_url)
 
 img = keras.preprocessing.image.load_img(
     piplup_path, target_size=(img_height, img_width)
@@ -160,13 +160,13 @@ predictions = model.predict(img_array)
 score = tf.nn.softmax(predictions[0])
 
 print(
-    "This Piplup most likely belongs to {} with a {:.2f} percent confidence."
+    "This Water-Type most likely belongs to {} with a {:.2f} percent confidence."
     .format(class_names[np.argmax(score)], 100 * np.max(score))
 )
 
 # Litwick Test
-litwick_url = "https://i.pinimg.com/originals/71/4c/94/714c942405dd3f487b50e86a30a9e1fe.jpg"
-litwick_path = tf.keras.utils.get_file('714c942405dd3f487b50e86a30a9e1fe', origin=litwick_url)
+litwick_url = "https://github.com/ashleyyz/ai-project/raw/master/fire-test.jpg"
+litwick_path = tf.keras.utils.get_file('fire-test', origin=litwick_url)
 
 img = keras.preprocessing.image.load_img(
     litwick_path, target_size=(img_height, img_width)
@@ -178,13 +178,13 @@ predictions = model.predict(img_array)
 score = tf.nn.softmax(predictions[0])
 
 print(
-    "This Blazekin most likely belongs to {} with a {:.2f} percent confidence."
+    "This Fire-Type most likely belongs to {} with a {:.2f} percent confidence."
     .format(class_names[np.argmax(score)], 100 * np.max(score))
 )
 
 # Shaymin Test
-shaymin_url = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/08cb8003-d697-4d4d-9f14-4bbc8ea9c929/d35vwgn-bcc0850e-2c51-4c97-a4ee-3706afff9fa9.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi8wOGNiODAwMy1kNjk3LTRkNGQtOWYxNC00YmJjOGVhOWM5MjkvZDM1dndnbi1iY2MwODUwZS0yYzUxLTRjOTctYTRlZS0zNzA2YWZmZjlmYTkuanBnIn1dXX0.VMxLNS_0E52xJcod3rk3xZcwU5GFDHAagA5hW4WEcHY"
-shaymin_path = tf.keras.utils.get_file('d35vwgn-bcc0850e-2c51-4c97-a4ee-3706afff9fa9', origin=shaymin_url)
+shaymin_url = "https://github.com/ashleyyz/ai-project/raw/master/grass-test.jpg"
+shaymin_path = tf.keras.utils.get_file('grass-test', origin=shaymin_url)
 
 img = keras.preprocessing.image.load_img(
     shaymin_path, target_size=(img_height, img_width)

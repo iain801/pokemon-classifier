@@ -147,7 +147,7 @@ del model
 model = load_model('pokemon_model')
 
 # Piplup Test
-piplup_url = "https://github.com/ashleyyz/ai-project/raw/master/water-test.jpg"
+piplup_url = "https://github.com/iain801/pokemon-classifier/raw/main/water-test.jpg"
 piplup_path = tf.keras.utils.get_file('water-test', origin=piplup_url)
 
 img = keras.preprocessing.image.load_img(
@@ -165,7 +165,7 @@ print(
 )
 
 # Litwick Test
-litwick_url = "https://github.com/ashleyyz/ai-project/raw/master/fire-test.jpg"
+litwick_url = "https://github.com/iain801/pokemon-classifier/raw/main/fire-test.jpg"
 litwick_path = tf.keras.utils.get_file('fire-test', origin=litwick_url)
 
 img = keras.preprocessing.image.load_img(
@@ -183,7 +183,7 @@ print(
 )
 
 # Shaymin Test
-shaymin_url = "https://github.com/ashleyyz/ai-project/raw/master/grass-test.jpg"
+shaymin_url = "https://github.com/iain801/pokemon-classifier/raw/main/grass-test.jpg"
 shaymin_path = tf.keras.utils.get_file('grass-test', origin=shaymin_url)
 
 img = keras.preprocessing.image.load_img(

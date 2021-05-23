@@ -210,3 +210,20 @@ score = tf.nn.softmax(predictions[0])
 plt.figure(figsize=(4, 4))
 plt.imshow(img)
 plt.title(class_names[np.argmax(score)] + " C=" + str(100 * np.max(score)) + "%")
+
+# poison Test
+poison_url = "https://github.com/iain801/pokemon-classifier/raw/main/poison-test.jpg"
+poison_path = tf.keras.utils.get_file('electric-test', origin=poison_url)
+
+img = keras.preprocessing.image.load_img(
+    poison_path, target_size=(img_height, img_width)
+)
+img_array = keras.preprocessing.image.img_to_array(img)
+img_array = tf.expand_dims(img_array, 0) # Create a batch
+
+predictions = model.predict(img_array)
+score = tf.nn.softmax(predictions[0])
+
+plt.figure(figsize=(4, 4))
+plt.imshow(img)
+plt.title(class_names[np.argmax(score)] + " C=" + str(100 * np.max(score)) + "%")

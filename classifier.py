@@ -19,7 +19,7 @@ image_count = len(list(data_dir.glob('*/*.jpg')))
 print(image_count)
 
 # Create a dataset
-batch_size = 16
+batch_size = 25
 img_height = 500
 img_width = 500
 
@@ -74,7 +74,7 @@ first_image = image_batch[0]
 print(np.min(first_image), np.max(first_image))
 
 # Create Model
-num_classes = 4
+num_classes = 5
 
 data_augmentation = keras.Sequential(
   [
@@ -87,11 +87,11 @@ data_augmentation = keras.Sequential(
 model = Sequential([
   data_augmentation,
   layers.experimental.preprocessing.Rescaling(1./255),
-  layers.Conv2D(16, 4, padding='same', activation='relu'),
+  layers.Conv2D(16, 5, padding='same', activation='relu'),
   layers.MaxPooling2D(),
-  layers.Conv2D(32, 4, padding='same', activation='relu'),
+  layers.Conv2D(32, 5, padding='same', activation='relu'),
   layers.MaxPooling2D(),
-  layers.Conv2D(64, 4, padding='same', activation='relu'),
+  layers.Conv2D(64, 5, padding='same', activation='relu'),
   layers.MaxPooling2D(),
   layers.Dropout(0.2),
   layers.Flatten(),
@@ -213,7 +213,7 @@ plt.title(class_names[np.argmax(score)] + " C=" + str(100 * np.max(score)) + "%"
 
 # poison Test
 poison_url = "https://github.com/iain801/pokemon-classifier/raw/main/poison-test.jpg"
-poison_path = tf.keras.utils.get_file('electric-test', origin=poison_url)
+poison_path = tf.keras.utils.get_file('poison-test', origin=poison_url)
 
 img = keras.preprocessing.image.load_img(
     poison_path, target_size=(img_height, img_width)

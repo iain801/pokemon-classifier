@@ -20,8 +20,8 @@ print(image_count)
 
 # Create a dataset
 batch_size = 25
-img_height = 500
-img_width = 500
+img_height = 400
+img_width = 400
 
 # 80/20 validation split
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
@@ -93,7 +93,7 @@ model = Sequential([
   layers.MaxPooling2D(),
   layers.Conv2D(64, 5, padding='same', activation='relu'),
   layers.MaxPooling2D(),
-  layers.Dropout(0.2),
+  layers.Dropout(0.4),
   layers.Flatten(),
   layers.Dense(128, activation='relu'),
   layers.Dense(num_classes)
@@ -107,7 +107,7 @@ model.compile(optimizer='adam',
 model.summary()
 
 # Train Model
-epochs = 50
+epochs = 100
 history = model.fit(
   train_ds,
   validation_data=val_ds,
